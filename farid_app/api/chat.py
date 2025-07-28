@@ -32,7 +32,7 @@ class AgentController:
                     khoj_url,
                     json=payload.dict(),
                     headers=headers,
-                    timeout=30,
+                    timeout=60,
                 ) as response:
                     logger.info(f"Khoj API response status: {response.status}")
                     response.raise_for_status()
