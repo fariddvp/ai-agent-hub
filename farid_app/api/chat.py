@@ -1,3 +1,4 @@
+
 from ninja_extra import api_controller, http_post, ControllerBase
 from django.http import JsonResponse
 import aiohttp
@@ -8,7 +9,8 @@ import os
 from asyncio import TimeoutError as AsyncTimeoutError
 
 from farid_app.schema.chat import ChatSchema
-
+from farid_app.models import Conversation
+from farid_app.services.chat_constructor import ChatHistoryConstructor
 
 
 logger = logging.getLogger(__name__)
@@ -45,5 +47,10 @@ class AgentController:
         except Exception as e:
             logger.exception(f"Unexpected error occurred: {str(e)}")
             return JsonResponse({"error": f"Unexpected error: {str(e)}"}, status=500)
+        
+
+        Conversation.conversation_log = (
+                    ChatHistoryConstructor.construct_chat(meta_log)
+                )
 
         return JsonResponse(data, status=200)
