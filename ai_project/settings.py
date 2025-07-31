@@ -133,3 +133,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 KHOJ_API_KEY = os.getenv("KHOJ_API_KEY")
 KHOJ_API_BASE_URL = os.getenv("KHOJ_API_BASE_URL")
+
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+GEMINI_API_BASE_URL = os.getenv("GEMINI_API_BASE_URL")
