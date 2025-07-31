@@ -20,7 +20,6 @@ khoj_url = os.getenv("KHOJ_API_BASE_URL")
 class AgentController:
     @http_post("/chat", response=None, description="Chat with the agent")
     async def chat(self, request, payload: ChatSchema):
-
         response_data = None
         errors = []
         for name, func in [
